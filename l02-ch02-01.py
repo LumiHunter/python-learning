@@ -42,7 +42,7 @@ del car_detail_list[1]
 print(car_company_list)
 print(car_detail_list)
 
-print('--------------------------')
+print()
 
 # 딕셔너리 구조: 코드 반복 지속, 중첩 문제(키), 키로 조회했을 때 예외 처리 등
 
@@ -56,7 +56,7 @@ car_dicts = [
 del car_dicts[1]
 print(car_dicts)
 
-print('----------------------------------------')
+print()
 
 # 클래스 구조: 구조 설계 후 재사용성 증가, 코드 반복 최소화, 메소드 활용
 

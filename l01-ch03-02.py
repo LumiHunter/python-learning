@@ -37,3 +37,26 @@ print(str_o1 * 3)
 print(str_o1 + str_o2)
 print('y' in str_o1)    # 시퀀스형들은 in을 쓸 수가 있다.
 print('P' not in str_o2)
+print()
+
+# 문자열 함수 -> 너무 많으니 검색해야.
+print(str_o1.capitalize())    # 시작 글자를 대문자로
+print(str_o2.endswith('s'), str_o2.startswith('a'))    # 마지막/첫번째 문자 체크
+print(str_o3.replace('doing', 'going'))
+print(str_o4.split(' '))
+print()
+
+# 반복(시퀀스)
+im_str = "Good boy"
+print(dir(im_str))    # 네임스페이스에 __iter__ 가 있는 객체는 '반복 가능'
+
+# 슬라이싱
+str_sl = "Nice Python"
+print(str_sl[1:4:2])
+print(str_sl[::-1])
+print()
+
+# 아스키코드
+a = 'z'
+print(ord(a))    # 문자 -> 아스키코드
+print(chr(65))    # 아스키코드 -> 문자
