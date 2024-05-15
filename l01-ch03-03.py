@@ -9,7 +9,7 @@ f = [21.42, 'foobar', 3, 4, False, 3.14159]
 
 print(c + d)
 print(c * 3)
-print('Test' + str(c[0]))    # 문자 + 숫자 -> 연산 불가(str이 시퀀스 형이기 때문에, +는 concatenate라서.) 숫자를 문자로 변환해야 함.
+print('Test' + str(c[0]))    # 문자 + 숫자 -> 연산 불가(str이 iterable 객체이기 때문에, +는 concatenate) 숫자를 문자로 변환해야 함.
 print()
 
 # Identity
