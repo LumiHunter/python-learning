@@ -45,4 +45,4 @@ print()
 # 외부 모듈
 import math
 print(math.pi)
-print(math.ceil(5.1))    # 올림!
+print(math.ceil(5.1))    # x 이상의 수 중에서 가장 작은 수 

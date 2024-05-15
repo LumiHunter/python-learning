@@ -32,3 +32,30 @@ print(c)
 
 # 리스트 함수
 a = [5,2,3,1,4]
+print(a.index(1), a[1])    # 인덱스로 불러오는 방법 두가지
+print(a)
+a.append(10)    # a 리스트 자체를 변경함
+print(a)
+a.sort()
+print(a)
+a.reverse()
+print(a)
+a.insert(2,7)    # (인덱스 번호, 넣고자 하는 요소)
+print(a)
+a.remove(10)
+print(a)
+print(a.pop())    # 마지막 인덱스에 있는 원소를 return하면서 리스트에서 제거
+print(a)
+print(a.count(2))
+ex1 = [8,9]
+a.extend(ex1)    # iterable 객체를 뒤에 이을 때
+print(a)
+ex2 = '89'
+a.extend(ex2)    
+print(a)
+ex3 = 8,9
+a.extend(ex3)
+print(a)
+
+while a:    # 빈 리스트: False
+    print(a.pop())

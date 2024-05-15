@@ -8,7 +8,6 @@ print("I\'m boy.")
 print('a \t b')
 print('a \n b')
 print('a \000 b')    # NULL
-
 print()
 # Raw String: 경로 지정하는 슬래시 기호를 사용하기 위해 이스케이프 문자를 무시!
 raw_s1 = r'D:\python\test'
@@ -25,8 +24,6 @@ Test
 
 print(multi_str)
 
-print()
-
 # 문자열 연산
 str_o1 = "python"
 str_o2 = "apple"
@@ -42,8 +39,13 @@ print()
 # 문자열 함수 -> 너무 많으니 검색해야.
 print(str_o1.capitalize())    # 시작 글자를 대문자로
 print(str_o2.endswith('s'), str_o2.startswith('a'))    # 마지막/첫번째 문자 체크
-print(str_o3.replace('doing', 'going'))
+print(str_o3.replace('are', 'was'))
 print(str_o4.split(' '))
+print(str_o1.join(["I love ", "!"]))    # 앞, 뒤에 문자 추가: join, [앞, 뒤]로 변수 넣어야 함.
+print(sorted(str_o2))    # ABC 순으로 정렬 -> 리스트
+print(sorted(str_o2, reverse=True))    # 역순으로 정렬
+print(reversed(str_o2))    # 거꾸로 쓰기(정렬X) -> 객체이므로 list 형태로 변환해줘야 함
+print(list(reversed(str_o2)))
 print()
 
 # 반복(시퀀스)
