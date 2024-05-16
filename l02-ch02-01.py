@@ -5,6 +5,9 @@
 # 일반적인 코딩
 
 # 차량1
+from typing import Any
+
+
 car_company_1 = 'Ferrari'
 car_detail_1 = [
     {'color': 'White'},
@@ -69,17 +72,21 @@ class Car():
     def __str__(self):
         return 'str : {} - {}'.format(self._company, self._details)
     
-    # 좀 더 엄격한 객체 정보를 print 할 때(2순위)
+    # 좀 더 엄격한 객체 정보를 print 할 때(2순위): 개발자용, str이 없으면 대체로 출력됨.
     def __repr__(self):
         return 'repr : {} - {}'.format(self._company, self._details)
+    
+    # 인스턴스를 삭제할 때 
+    def __reduce__(self):
+        pass
         
 car1 = Car('Ferrari',{'color': 'White', 'horsepower': 400,'price': 8000})
 car2 = Car('Bmw',{'color': 'Black','horsepower': 270 ,'price': 5000})
 car3 = Car('Audi',{'color': 'Silver','horsepower': 300,'price': 6000})
 
 print(car1)
-print(car2.__dict__)    # 인스턴스 변수 모두 보여주기
-print(dir(car3))    # 네임스페이스에 저장된 것 모두 보여주기
+print(car2.__dict__)    # 해당 객체의 네임스페이스에 저장된 속성 정보만 모두 보여주기. (딕셔너리)
+print(dir(car3))    # 네임스페이스에 저장된 것 모든 메타 데이터 보여주기. 모든 클래스는 Object를 상속 받기 때문에 __init__, __dict__ 등의 매직 메소드들을 포함한다.(리스트)
 
 car_list = []
 car_list.append(car1)
@@ -90,4 +97,4 @@ for x in car_list:
     print(x)
     print(repr(x))
 
-print(car_list)    # 리스트에서 프린트할 때는 repr
+print(car_list)    # 리스트에서 프린트할 때는 repr 형태로.
