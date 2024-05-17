@@ -5,8 +5,6 @@
 # 일반적인 코딩
 
 # 차량1
-from typing import Any
-
 
 car_company_1 = 'Ferrari'
 car_detail_1 = [
