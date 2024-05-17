@@ -85,8 +85,8 @@ car2 = Car('Bmw',{'color': 'Black','horsepower': 270 ,'price': 5000})
 car3 = Car('Audi',{'color': 'Silver','horsepower': 300,'price': 6000})
 
 print(car1)
-print(car2.__dict__)    # 해당 객체의 네임스페이스에 저장된 속성 정보만 모두 보여주기. (딕셔너리)
-print(dir(car3))    # 네임스페이스에 저장된 것 모든 메타 데이터 보여주기. 모든 클래스는 Object를 상속 받기 때문에 __init__, __dict__ 등의 매직 메소드들을 포함한다.(리스트)
+print(car2.__dict__)    # 해당 객체의 네임스페이스에 저장된 속성 정보만, 인스턴스 변수만 모두 보여주기. (딕셔너리)
+print(dir(car3))    # 네임스페이스에 저장된 것 모든 메타 데이터 보여주기. 모든 클래스는 Object를 상속 받기 때문에 __init__, __dict__ 등의 매직 메소드들을 포함하고, 클래스 변수까지 포함한다.(리스트)
 
 car_list = []
 car_list.append(car1)
