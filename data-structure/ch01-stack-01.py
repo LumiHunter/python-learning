@@ -8,7 +8,7 @@ def isEmpty():
     return top == -1
 
 def isFull():
-    return top == capacity
+    return top == capacity-1
 
 # 스택의 push()
 def push(e):
