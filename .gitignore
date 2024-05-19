@@ -2,5 +2,6 @@ Include/
 Lib/
 python1.0_source/
 Scripts/
+__pycache__
 
 pyvenv.cfg

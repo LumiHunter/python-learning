@@ -1,5 +1,3 @@
-# 여러개의 '스택' 자료구조를 찍어내어 사용할 수 있도록 -> 클래스 화!
-
 class ArrayStack():
     def __init__(self, capacity):
         self.capacity = capacity
@@ -34,14 +32,3 @@ class ArrayStack():
     
     def size(self):
         return self.top+1
-
-# 스택 이용 예시: 문자열 역순 출력    
-s = ArrayStack(100)
-msg = input("sequence input: ")
-for c in msg:
-    s.push(c)
-    
-print("reverse print: ", end='')
-while not s.isEmpty():
-    print(s.pop(), end='')
-print()
