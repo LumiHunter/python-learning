@@ -34,6 +34,15 @@ class ArrayStack():
     
     def size(self):
         return self.top+1
+    
+    def clear(self):
+        while self.top != -1:
+            self.array[self.top] = None
+            self.top -= 1
+            
+    def display(self):
+        for i in range(self.top):
+            print(self.array[i], end=' ')
 
 # 스택 이용 예시: 문자열 역순 출력    
 s = ArrayStack(100)

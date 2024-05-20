@@ -28,3 +28,13 @@ print('문자열 출력: ', end='')
 while not stack.empty():
     print(stack.get(), end='')
 print()
+
+# 순환구조
+def printReverse(msg, len):
+    if len == 1:
+        print(msg[0], end='')
+    else:
+        print(msg[len-1], end='')
+        printReverse(msg, len-1)
+instr = '자료구조'
+printReverse(instr, len(instr))
