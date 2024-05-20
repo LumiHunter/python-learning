@@ -1,7 +1,8 @@
-Include/
-Lib/
-python1.0_source/
-Scripts/
+Include
+Lib
+python1.0_source
+Scripts
 __pycache__
+source_code
 
 pyvenv.cfg
