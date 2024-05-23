@@ -29,3 +29,14 @@ def conv_abs(x):
 
 print(list(map(conv_abs, [1,-2,3,-4,5])))
 print(list(map(lambda x: abs(x), [1,-2,3,-4,5])))
+
+# sorted: 반복가능한 객체 정렬 후 반환
+print(sorted([6,7,4,3,1,2]))
+print(sorted('python'))
+
+# sum: 반복가능한 객체의 합을 반환
+print(sum([6,7,8,9,10]))
+
+# zip: 반복가능한 객체의 요소를 묶어서(튜플로 만들어서) 반환
+print(list(zip([10,20,30],[40,50,60])))
+print(list(zip([1,2],[10,20,30])))    # 짝이 맞는 것만 나옴
