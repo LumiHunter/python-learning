@@ -10,7 +10,7 @@ class Vector():
             self._x, self._y = args
     
     def __repr__(self):
-        '''Retrun the vector informations.'''
+        '''Return the vector informations.'''
         return 'Vector (%r, %r)' % (self._x, self._y)
     
     def __add__(self, other):

@@ -59,14 +59,19 @@ print(p2._asdict())
 print(p4._asdict())
 
 
-# 사용 예시
+# 사용 예시: 다량의 데이터 관리
 Classes = namedtuple('Classes', 'rank, number')
 
 students = [Classes(rank, number)
              for rank in 'A B C D'.split()
-             for number in [str(n) for n in range(1,21)]]
+             for number in [str(n) for n in range(1,21)]]    # List Comprehension
 print(len(students))
-print(students)
 
 for s in students:
     print(s)
+
+# 헷갈림 주의
+Cases = namedtuple('Classes', 'a b')    # 클래스 이름, 키 값들을 선언한 것이므로,
+c = Cases(1,2)    # Cases라는 이름으로 인스턴스를 생성해도 해당 인스턴스는 Classes 클래스임!!
+print(Cases)
+print(type(c))
