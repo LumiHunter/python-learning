@@ -13,7 +13,7 @@ print()
 
 # file 옵션: print 내용을 파일로 저장
 import sys
-print('Learn Python', file=sys.stdout)    # sys.stdout: 현재 콘솔
+print('Learn Python', file=sys.stdout)    # sys.stdout: 현재 콘솔(실제 파일 쓰기 기능 구현 대신 쓴 명령어임)
 print()
 
 # format 사용(d:정수, s:문자열, f:실수)
@@ -23,6 +23,7 @@ print('{1} {0}'.format('one', 'two'))    # 인덱스 지정
 print()
 
 # %s
+# ^: 가운데, <: 왼쪽, >: 오른쪽 정렬
 print('%10s' % ('nice'))    # 10자리수 확보(오른쪽 정렬)
 print('{:>10}'.format('nice'))    # 왼쪽부터 공백으로 채운 다음 원하는 문자열을 출력함
 
@@ -51,9 +52,10 @@ print('{:#>4d}'.format(42))
 print()
 
 # %f
-print('%f' % (3.14159265358979323846))    # defalut 소수부 6자리까지
-print('%1.8f' % (3.14159265358979323846))    # 정수부.소수부 자리수 지정
-print('%06.2f' % (3.14159265358979323846))    # '총' 6자리 확보, 정수부에 0으로 채움.
+pi = 3.14159265358979323846
+print('%f' % (pi))    # defalut 소수부 6자리까지
+print('%1.8f' % (pi))    # 정수부.소수부 자리수 지정
+print('%06.2f' % (pi))    # '총' 6자리 확보, 정수부에 0으로 채움.
 
-print('{:f}'.format(3.14159265358979323846))    # defalut 소수부 6자리까지
-print('{:06.2f}'.format(3.14159265358979323846))
+print('{:f}'.format(pi))    # defalut 소수부 6자리까지
+print('{:06.2f}'.format(pi))
