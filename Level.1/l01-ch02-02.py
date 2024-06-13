@@ -19,4 +19,8 @@ print(n, type(n))
 # id 확인: 객체의 고유값 확인
 m = n
 # m -> 777 <- n
-print(id(m), id(n))
+print(id(m) == id(n))
+a = 777
+b = 777
+print(id(a) == id(b))
+print(id(m) == id(n) == id(a) == id(b))
