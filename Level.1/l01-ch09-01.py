@@ -4,6 +4,8 @@
 f = open('./Level.1/resource/it_news.txt', 'r', encoding='UTF-8')    # t: 텍스트가 디폴트이므로 'rt'가 아니라 'r', 바이너리로 읽는다면 'rb'
 # 파일을 열어보면 VS Code 우측 하단에 encoding이 명시되어 있음.
 # open의 encoding 디폴트는 UTF-8
+print(f)
+print(type(f))    # <class '_io.TextIOWrapper'>
 print(dir(f))
 print(f.encoding)
 print(f.name)
@@ -69,4 +71,4 @@ with open('./Level.1/contents3 .txt', 'w') as f:
     print('Test Text Write', file=f)
 
 with open('./Level.1/contents4 .txt', 'w') as f:     # 아무것도 입력하지 않아도 파일은 생성됨.
-    print(type(f))    # <class '_io.TextIOWrapper'>
+    print()    
