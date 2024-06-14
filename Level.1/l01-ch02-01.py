@@ -13,7 +13,8 @@ print()
 
 # file 옵션: print 내용을 파일로 저장
 import sys
-print('Learn Python', file=sys.stdout)    # sys.stdout: 현재 콘솔(실제 파일 쓰기 기능 구현 대신 쓴 명령어임)
+print('Learn Python', file=sys.stdout)
+# sys.stdout: 현재 콘솔(실제 파일 쓰기 기능 구현 대신 쓴 명령어임) -> ch09-01 참조: open() 함수로 연결한 <class '_io.TextIOWrapper'> 객체를 입력해야 함.
 print()
 
 # format 사용(d:정수, s:문자열, f:실수)
