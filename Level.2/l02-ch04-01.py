@@ -3,8 +3,8 @@
 # 컨테이너(Container): 서로 다른 자료형 -> 리스트, 튜플, collections.deque
 # 플랫(Flat): 한 개의 자료형 -> 문자열(str), bytes, bytearray, array.array, memoryview
 
-# 가변형: 리스트, bytearray, array.array, memoryview, collections.deque
-# 불변형: 튜플, 문자열(str), bytes
+# 가변형(mutable): 리스트, bytearray, array.array, memoryview, collections.deque
+# 불변형(immutable): 튜플, 문자열(str), bytes
 
 
 # 지능형 리스트(Comprehending Lists)
