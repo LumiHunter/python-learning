@@ -13,7 +13,7 @@ print('Test' + str(c[0]))    # 문자 + 숫자 -> 연산 불가(str이 iterable 
 print()
 
 # Identity
-temp = c    # 깊은 복사
+temp = c
 print(id(temp))
 print(id(c))
 print(c.remove(85))
