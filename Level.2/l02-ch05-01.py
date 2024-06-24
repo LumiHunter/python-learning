@@ -30,14 +30,16 @@ print(list(map(var_func, range(1,11))))
 print()
 
 # 함수를 함수에 인수로 전달 및 함수로 결과 반환 -> Higher-order function
-# map, filter, reduce
+# map, filter: 인자를 하나씩 전달하므로, 인자를 하나만 받는 함수 필요
+# reduce: 직전의 결과와 다음 인자를 하나씩 전달하므로, 인자를 두개 받는 함수 필요
 print([var_func(i) for i in range(1,6) if i % 2])
 print(list(map(var_func, filter(lambda x: x % 2, range(1, 6)))))
 # map에 var_func 함수를 인수로, filter에 lambda 함수를 인수로 전달
+
 from functools import reduce
 from operator import add
 print(sum(range(1,11)))
-print(reduce(add, range(1,11)))    # 하나씩 줄여가면서 함수에 적용: reduce
+print(reduce(add, range(1,11)))
 # 익명함수 lambda는 가급적 주석을 달기를 권장됨.
 # 일반함수 형태로 리팩토링하기를 권장함
 print(reduce(lambda x, t: x + t, range(1,11)))
@@ -47,7 +49,7 @@ print()
 print(callable(str), callable(A), callable(list), callable(var_func), callable(3.14))
 print()
 
-# inspect
+# inspect: 함수를 인자로 받는 함수들
 from inspect import signature
 sg = signature(var_func)
 print(sg)
