@@ -26,7 +26,10 @@ def func_v3(a):
     global c
     print(a)    
     print(c)
-    c = 40    # global로 c를 받아왔으므로, 여기의 c는 global c와 같다. func_v3을 호출함으로써 c가 변한다!  
+    c = 40 
+    # global로 c를 받아왔으므로, 여기의 c는 global c와 같다. func_v3을 호출함으로써 c가 변한다! 
+    # 단, 함수에서 전역변수 변경을 누적시킬 수 있도록 하는 것이 권장되지는 않음. 
+    # 함수 하나의 프로세스가 끝나면 그 상태로 두고 재사용 가능하게 두도록 하는 것이 권장됨.
 func_v3(10)
 print(c)
 
@@ -44,6 +47,7 @@ print(a + 1000)
 # 결과 누적(함수 사용)
 print(sum(range(1,11)))
 
+# 클로저 구현(클래스 형태)
 class Averager():
     def __init__(self):
         self._series = []
