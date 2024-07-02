@@ -65,23 +65,32 @@ def coroutine2(x):
     z = yield x + y
     print('>>> coroutine received: {}'.format(z))
     yield z
+    print('No yield')
+    yield
     
 cr3 = coroutine2(10)
 print(cr3)    # yield까지 실행되지 않았기 때문에, 아직 상태값이 없음.
 print(getgeneratorstate(cr3))
 
 print(next(cr3))    # next는 yield에 아무것도 보내지 않음
-# y = yield x: "상태값(yield)은 x(10)" + "send를 통해 yield에 들어온 값은 y로 보낸다."
+# y = yield x: "상태값인 x를 return(yield)하므로 10 출력" + "향후 send를 통해 yield에 들어올 값은 y에 할당한다."
 print(getgeneratorstate(cr3))
 
 print(cr3.send(100))     # yield를 통해 y에 100을 보냄
-# z = yield x + y: "상태값(yield)은 x + y(110)" + "send를 통해 yield에 들어온 값은 z로 보낸다."
+# z = yield x + y: "상태값인 x + y를 return(yield)하므로 110 출력" + "send를 통해 yield에 들어온 값은 z에 할당한다."
 print(getgeneratorstate(cr3))
 
 print(cr3.send(200))    # yield를 통해 z에 200을 보냄
-# yield z: "상태값(yield)은 z"
-# 다음 yield가 없으므로, next 또는 send 실행 시 StopIteration 발생.
+# yield z: "상태값인 z를 return(yield)하므로 200 출력" + "send를 통해 yield에 값이 들어와도 할당할 곳이 없다"
 print(getgeneratorstate(cr3))
+print(cr3.send(300))
+# yield: "return할 상태값이 None임" + "send를 통해 들어온 값은 서브루틴 안에 할당되지 못했다"
+print(getgeneratorstate(cr3))
+try:
+    next(cr3)
+except StopIteration:
+    print('There is no yield anymore')
+    print(getgeneratorstate(cr3))
 print()
 
 # coroutine ex3
