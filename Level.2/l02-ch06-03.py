@@ -84,7 +84,7 @@ print(cr3.send(200))    # yield를 통해 z에 200을 보냄
 # yield z: "상태값인 z를 return(yield)하므로 200 출력" + "send를 통해 yield에 값이 들어와도 할당할 곳이 없다"
 print(getgeneratorstate(cr3))
 print(cr3.send(300))
-# yield: "return할 상태값이 None임" + "send를 통해 들어온 값은 서브루틴 안에 할당되지 못했다"
+# yield: "return할 상태값이 None임" + "send를 통해 들어온 값은 서브루틴 내부의 변수에 할당되지 못했다"
 print(getgeneratorstate(cr3))
 try:
     next(cr3)
