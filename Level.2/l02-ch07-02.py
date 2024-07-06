@@ -13,6 +13,11 @@ import timeit
 from urllib.request import urlopen    # block I/O 함수. 
 from concurrent.futures import ThreadPoolExecutor
 import threading
+from bs4 import BeautifulSoup
+import sys, io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
+sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
 
 start = timeit.default_timer()
 
@@ -22,8 +27,11 @@ urls = ['http://daum.net', 'http://naver.com', 'http://tistory.com', 'http://wem
 async def fetch(url, executor):
     print('Thread Name: ', threading.current_thread(), 'Start', url)
     res = await loop.run_in_executor(executor, urlopen, url)
+    soup = BeautifulSoup(res.read(), 'html.parser')
+    # print(soup.prettify())    # 전체 페이지 소스 확인 
+    result_data = soup.title
     print('Thread Name: ', threading.current_thread(), 'Done', url)
-    return res.read()[0:5]
+    return result_data
 
 async def main():
     # Non-block I/O: Thread Pool 생성
