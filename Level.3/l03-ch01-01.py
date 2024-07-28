@@ -2,6 +2,11 @@
 Python Variable Scope
 Keywords: scope, glabal, nonlocal, locals, globals
 '''
+'''
+전역변수는 주로 변하지 않는 고정 값에 사용함
+지역변수 사용 이유: 지역변수는 함수 내의 로직 해결헤 국한, 소멸주기: 함수 실행 해제 시
+전역변수를 지역 내에서 수정하는 것은 권장하지 않음!
+'''
 
 a = 10    # global variable
 
@@ -44,3 +49,18 @@ def outer():
 
 in_test = outer()    # Closure
 in_test()
+
+def func(var):
+    x = 10
+    def printer():
+        print('Printer Func Inner')
+    print('Func Innter', locals())    # 해당 지역 scope에 있는 객체들을 모두 딕셔너리로 출력해줌
+func('Hi')
+
+print(globals())
+for i in range(1,10):
+    for j in range(1,10):
+        globals()[f'mul_{i}_{j}'] = i*j
+        
+print(globals())
+print(mul_2_2)    # globals() 딕셔너리에 직접 원소를 추가하는 방식으로도 전역변수를 생성할 수 있다.
