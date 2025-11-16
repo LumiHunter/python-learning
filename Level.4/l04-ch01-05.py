@@ -41,7 +41,11 @@ def main():
     # print(task1.result())
     # print(task2.result())
     
-    # max_workers : executor가 한번에 실행시키는 작업의 개수. 작업의 개수가 넘어가면 직접 설정이 유리
+    # max_workers : executor가 한번에 실행시키는 작업의 개수. 최대 몇개의 스레드가 병렬로 작업하는가.
+    # CPU-bound 작업에서는 스레드 여러개라도 GIL 때문에 한번에 하나의 스레드만. -> CPU 계산이 많다면 max_workers를 늘려도 성능향상 없음.
+    # IO-bound 작업에서는 GIL을 자주 해제하므로 max_workers를 늘리는 것이 의미 있음.
+    # -> ThreadPoolExecutor에서 max_workers는 동시에 실행될 스레드의 수인데, GIL의 영향을 받기 때문에 I/O 작업 시에나 병렬 처리 효과가 있음.
+    # -> CPU 코어 수와는 상관이 없음
     with ThreadPoolExecutor(max_workers=3) as excutor:
         tasks = excutor.map(task, ['First', 'Second', 'Third', 'Fourth'])    # Fourth는 Third까지 묶음이 다 실행되고 나서 실행됨.
         print(list(tasks))

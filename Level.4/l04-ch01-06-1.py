@@ -29,7 +29,20 @@ from concurrent.futures import ThreadPoolExecutor
 import time
 
 class FakeDataStore:
-    pass
+    # 공유 변수(value) -> 공유된 자원이 하나인 상황. 뮤텍스 실험
+    def __init__(self):
+        self.value = 0    # Data, Heap 영역에서 스레드 간에 공유됨
+    
+    # 변수 업데이트
+    def update(self, n):    
+        logging.info("Thread %s: starting update", n)
+
+        local_copy = self.value    # local_copy는 Stack 영역에 있음! 스레드 별로 별도.
+        local_copy += 1
+        time.sleep(0.1)
+        self.value = local_copy
+
+        logging.info("Thread %s: Finishing update", n)
 
 if __name__ == "__main__":
     # Logging Format 설정
@@ -45,5 +58,6 @@ if __name__ == "__main__":
     with ThreadPoolExecutor(max_workers=2) as executor:
         for n in ['First', 'Second', 'Third']:
             executor.submit(store.update, n)
-            
-    logging.info("Testing update. Starting value is %d", store.value)
+
+    # update 함수 내부가 동기화되지 않았기 때문에 스레드 실행 갯수가 update의 횟수로 쌓이지 않는다.
+    logging.info("Testing update. Ending value is %d", store.value)
