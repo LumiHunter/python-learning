@@ -19,8 +19,8 @@ Keyword - Process, Thread, 병렬성
     - 코드 작성이 쉬움/디버깅은 어려움: 프로세스, 코드 작성이 어려움/디버깅도 어려움: 스레드
 """
 """
-동시성(concurrent): 싱글 코어. T1과 T2가 Context Switch를 통해 왔다갔다
-병렬성(Parallel): 멀티플 코어. 
+동시성(Concurrency): 단일 CPU 코어에서. T1과 T2가 Context Switch를 통해 시간을 나누어 실행하는 것.
+병렬성(Parallelism): 여러 CPU 코어에서 작업을 동시에 실행하는 것.
 
 멀티스레드 프로세스에서 Code, Data, Heap은 공유되고 Stack만 따로
 멀티프로세스에서는 모든 게 따로.
