@@ -1,41 +1,77 @@
 '''
-Keywords: lambda, map, filter, reduce
+Chapter 1
+Python Advanced (1) - Python Variable Scope
+Keyword - scope, global, nonlocal,locals, glabals
 '''
-
 '''
-lambda 장점: 익명, 힙 영역 사용 즉시 소멸, pythonic, 파이썬 가비지 컬렉션
-cf. 일반함수는 재사용성을 위해 메모리에 저장. 즉, 한번 쓰고 마는 것 -> lambda
-시퀀스형 전처리에 Reduce, Map, filter 주로 사용
+전역변수는 주로 변하지 않는 고정 값에 사용됨.
+지역변수 사용 이유: 지역변수는 함수 내의 로직 해결에 국한, 소멸주기: 함수 실행 해제 시
+전역변수가 지역 내에서 수정되는 것은 권장되지 않음
 '''
+# Ex1. 
+a = 10  # Global variable
 
-digits1 = [x * 10 for x in range(1, 11)]
-result = list(map(lambda i: i**2, digits1))
-print(result)
+def foo():
+    # Read global variable
+    print('Ex1>', a)
 
-# 이중함수 패턴
-def also_square(nums):
-    def double(x):
-        return x ** 2
-    return map(double, nums)
-print(list(also_square(digits1)))
+foo()
 
-digits2 = list(range(1,11))
-result = list(filter(lambda x: x % 2 == 0, digits2))
-print(result)
+# Ex2.
+b = 20
+def bar():
+    b = 30  # local variable
+    print('Ex2>', b)  
+    # 파이썬은 로컬 스코프를 먼저 찾고 그 다음 전역스코프를 찾기 때문에, 30이 출력됨
 
-def also_evens(nums):
-    def is_even(x):
-        return x % 2 == 0
-    return filter(is_even, nums)
-print(list(also_evens(digits2)))
+bar()
 
-from functools import reduce     # 내장함수가 아님!!
-digits3 = list(range(1, 101))
-result = reduce(lambda x, y: x+y, digits3)    # iterable을 순회하면서 func에서 지정해놓은 최종 누적 결과값을 내놓음(결과가 iterable 아님)
-print(result)
+# Ex3.
+c = 40
+def foobar():
+    # c = c + 10
+    # print('Ex3>', c)
+    # UnboundLocalError: 로컬 스코프에서는 전역 변수를 수정할 수 없다. global 예약어 없이는.
+    global c
+    c = 60
+    c += 100
+    print('Ex3>', c)
 
-def also_add(nums):
-    def add_plus(x, y):
-        return x + y
-    return reduce(add_plus, nums)
-print(also_add(digits3))
+foobar()
+print('Ex4>', c)    # foobar()는 전역변수 c를 수정한 게 맞음.
+
+# Ex4.
+def outer():
+    e = 70
+    def inner():
+        nonlocal e  # 지역변수 안에서 클로저 사용할 때 쓰는 예약어 nonlocal
+        e +=10
+        print('Ex5>', e)
+    return inner
+
+in_test = outer()  # Closure: 함수 inner가 반환됨
+in_test()  # e = 80
+in_test()  # e = 90. 변형된 값을 계속 '기억하고' 있기 위해 closure를 쓴다!
+
+# Ex6.
+def func(var):
+    x = 10
+    def printer():
+        print('Ex6>', "Printer Func Inner")
+    print("Func Inner", locals())  # 해당 지역 스코프에 어떤 객체가 있는지 dictionary로 보여줌
+
+func('Hi')
+
+# Ex7.
+print('Ex7>', globals())
+# test_variable = 100 이와 같이 변수를 선언하면
+# 내부적으로 globals()['test_variable']=100 이런 방식으로,
+# 변수를 하나 선언하면 locals(지역 스코프) 또는 globals(전역 스코프)에 key-value로 들어감
+
+# Ex8. 지역 -> 전역 변수 생성
+for i in range(1, 10):
+    for k in range(1, 10):
+        globals()['plus_{}_{}'.format(i, k)] = i + k
+
+print(globals())
+print(plus_5_5)  # 동적으로 변수 생성
